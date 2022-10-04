@@ -1,0 +1,42 @@
+﻿@model IEnumerable<AzureEjercicioHiberusGuillermo.Models.ReconocimientoImagen.IReconocimientoImagen>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1> Reconocimiento de imagenes </h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageUrl)
+                    <img class="blobImage img-responsive" src="@item.ImageUrl" />
+                 <br>
+                @if (item.Objects.Count > 0)
+                {
+                @foreach (var obj in item.Objects)
+                { 
+                    @if (!string.IsNullOrEmpty(@obj))
+                    {
+                       <p class="text-white"> @obj </p>
+                    }
+                    else
+                    {
+                    <p>Objects cannot be detected</p>
+                    }
+                }
+                }
+            </td> 
+        </tr>
+
+}
+    </tbody>
+</table>

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<AzureEjercicioHiberusGuillermo.Models.TextoImagen.ITextoImagen>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Texto Imagen</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.ImageUrl)*@
+                    <img class="blobImage" src="@item.ImageUrl" alt="Text analysis image" />
+                    <br> @foreach (var text in item.Text)
+                    {
+                       <span> @text </span>
+                    }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
